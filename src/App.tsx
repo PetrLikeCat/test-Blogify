@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useAppDispatch, useAppSelector } from './hook';
+import { fetchPost } from './redux/slicePost';
+import { Route, Routes } from "react-router-dom";
+
+import { Home } from './pages/Home';
+import "./scss/all.scss"
+import { PostFull } from './pages/PostFull';
+import { Layout } from './components/Layout';
 
 function App() {
+  const dispatch = useAppDispatch();
+  React.useEffect(() => {
+    dispatch(fetchPost());
+  }, [dispatch]);
+
+  const { loading } = useAppSelector((state) => state.post);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading && <h2>Loading...</h2>}
+      <Routes >
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route
+            path="/postfull/:id"
+            element ={<PostFull />} // Передаем id в компонент PostFull
+          />
+        </Route>
+      </Routes>
     </div>
   );
 }
