@@ -4,7 +4,7 @@ import { fetchPost } from './redux/slicePost';
 import { Route, Routes } from "react-router-dom";
 
 import { Home } from './pages/Home';
-import "./scss/all.scss"
+import "./scss/App.scss"
 import { PostFull } from './pages/PostFull';
 import { Layout } from './components/Layout';
 
@@ -23,7 +23,7 @@ function App() {
           <Route index element={<Home />} />
           <Route
             path="/postfull/:id"
-            element ={<PostFull />} // Передаем id в компонент PostFull
+            element={<PostFull />} // Передаем id в компонент PostFull
           />
         </Route>
       </Routes>

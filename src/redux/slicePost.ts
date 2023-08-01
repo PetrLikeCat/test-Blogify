@@ -49,6 +49,10 @@ const slicePost = createSlice({
         state.loading = false;
       }
     );
+    boiunding.addCase(fetchPost.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message ?? "Unknown error";
+    });
   },
 });
 

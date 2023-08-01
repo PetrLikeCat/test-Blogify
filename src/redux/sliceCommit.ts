@@ -21,7 +21,9 @@ const initialState: commentsType = {
   loading: false,
   error: null,
 };
-
+interface MyPayloadAction<T> extends PayloadAction<T> {
+  // Поле payload будет иметь тип T
+}
 export const fetchSliceCommit = createAsyncThunk<
   commentsType,
   string,
@@ -89,6 +91,10 @@ const sliceCommits = createSlice({
       state.error = action.error.message ?? "Unknown error";
     });
 
+    boiunding.addCase(newPost.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
     boiunding.addCase(
       newPost.fulfilled,
       (state, action: PayloadAction<any>) => {

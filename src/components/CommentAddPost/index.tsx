@@ -25,7 +25,7 @@ export const CommentAddPost: React.FC<idProps> = ({ id }) => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='commend-add'>
             <TextField id="standard-basic" label="Комментарий" variant="standard" value={text} onChange={(e) => setText(e.target.value)} />
             <Button onClick={() => onClickAdd()}>Отправить комментарий</Button>
         </div>

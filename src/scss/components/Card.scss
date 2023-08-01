@@ -1,0 +1,25 @@
+.post-item__wrapper {
+  background-color: #f0f0f0;
+  margin-bottom: 16px;
+  border-radius: 10px;
+}
+.post-item {
+  padding: 16px;
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  &__body {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+}
